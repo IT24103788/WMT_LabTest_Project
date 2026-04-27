@@ -3,24 +3,12 @@ import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 import itemRoutes from "./routes/itemRoutes.js";
-import dns from "dns";
-
-dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 dotenv.config();
 
 const app = express();
 
-
-app.use(cors({
-  origin: "https://wmtlabtestprojectfrontend-production.up.railway.app",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
-}));
-
-
-app.options("*", cors());
-
+app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
