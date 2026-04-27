@@ -11,7 +11,16 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+
+app.use(cors({
+  origin: "https://wmtlabtestprojectfrontend-production.up.railway.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
+
+app.options("*", cors());
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
